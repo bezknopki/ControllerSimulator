@@ -1,7 +1,6 @@
 using ControllerSimulator.Controllers;
 using ControllerSimulator.DataAccess;
 using ControllerSimulator.Helpers;
-using ControllerSimulator.Models;
 using ControllerSimulatorTests.TestingHelpers;
 
 namespace ControllerSimulatorTests

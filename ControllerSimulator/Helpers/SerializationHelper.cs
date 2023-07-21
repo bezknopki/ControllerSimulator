@@ -5,7 +5,7 @@ namespace ControllerSimulator.Helpers
 {
     public static class SerializationHelper
     {
-        static JsonSerializerSettings _settings;
+        static readonly JsonSerializerSettings _settings;
 
         static SerializationHelper()
         {
@@ -24,7 +24,7 @@ namespace ControllerSimulator.Helpers
             };
         }
 
-        public static string Serialize(object obj) 
+        public static string Serialize(object obj)
             => JsonConvert.SerializeObject(obj, _settings);
     }
 }

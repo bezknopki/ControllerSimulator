@@ -1,7 +1,6 @@
 ﻿using ControllerSimulator.DataAccess;
 using ControllerSimulator.Helpers;
 using ControllerSimulator.Models;
-using System.Configuration;
 
 namespace ControllerSimulator.Controllers
 {

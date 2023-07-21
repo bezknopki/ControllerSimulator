@@ -32,7 +32,7 @@ namespace ControllerSimulator.DataAccess
         {
             foreach (var customer in _customerRepository.GetAll())
                 customer.UpdateQuota();
-            
+
             return _customerRepository.GetAll();
         }
     }

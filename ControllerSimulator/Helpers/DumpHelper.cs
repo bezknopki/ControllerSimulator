@@ -1,5 +1,4 @@
 ﻿using ControllerSimulator.Models;
-using Newtonsoft.Json;
 using System.Text;
 
 namespace ControllerSimulator.Helpers
@@ -8,7 +7,7 @@ namespace ControllerSimulator.Helpers
     {
         public static readonly string _dumpPath = "..\\Dumps";
 
-        public static string DumpPath => _dumpPath;       
+        public static string DumpPath => _dumpPath;
 
         public static void DumpCustomer(Customer customer)
         {
