@@ -12,22 +12,40 @@ namespace ControllerSimulator.Helpers
 
         public static void DumpCustomer(Customer customer)
         {
+            string filePath = FilePathForCustomer(customer);
+            var serializedCustomer = SerializationHelper.Serialize(customer);
+            WriteToFile(serializedCustomer, filePath);
+        }
+
+        private static string FilePathForCustomer(Customer customer)
+        {
             string fileName = "customer" + customer.Id + ".json";
             string filePath = Path.Combine(dumpPath, fileName);
-            var serializedCustomer = JsonConvert.SerializeObject(customer);
-            WriteToFile(serializedCustomer, filePath);
+            return filePath;
         }
 
         public static void DumpCustomersFullName(IEnumerable<Customer> customers)
         {
+            var filePath = FilePathForCustomersNames();
+            var customersNames = BuildCustomersNamesString(customers);
+
+            WriteToFile(customersNames, filePath);
+        }
+
+        private static string FilePathForCustomersNames()
+        {
             string fileName = "customersNames.txt";
             string filePath = Path.Combine(dumpPath, fileName);
+            return filePath;
+        }
 
+        private static string BuildCustomersNamesString(IEnumerable<Customer> customers)
+        {
             StringBuilder stringBuilder = new();
             foreach (var customer in customers)
                 stringBuilder.AppendLine(customer.FullName);
 
-            WriteToFile(stringBuilder.ToString(), filePath);
+            return stringBuilder.ToString();
         }
 
         private static void WriteToFile(string toWrite, string path)

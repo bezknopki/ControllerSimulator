@@ -20,25 +20,19 @@ namespace ControllerSimulator.Models
             Quota = roughCustomer.quota;
         }
 
-        [JsonProperty("id")]
         public int Id { get; set; }
 
-        [JsonProperty("firstName")]
         public string FirstName { get; set; }
 
-        [JsonProperty("middleName")]
         public string MiddleName { get; set; }
 
-        [JsonProperty("lastName")]
         public string LastName { get; set; }
 
         [JsonProperty("born")]
         public DateTime DateOfBirth { get; set; }
 
-        [JsonProperty("rank")]
         public Rank Rank { get; set; }
 
-        [JsonProperty("quota")]
         public int Quota { get; set; }
 
         [JsonIgnore]

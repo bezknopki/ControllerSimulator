@@ -4,17 +4,15 @@ namespace ControllerSimulator.DataAccess
 {
     public class UnitOfWork
     {
-        private CustomerRepository customerRepository;
-        private CustomersContext customersContext;
+        private readonly IRepository<Customer> customerRepository;
 
         public UnitOfWork(CustomersContext ctx)
         {
-            customersContext = ctx;
-            customerRepository = new(customersContext);
+            customerRepository = new CustomerRepository(ctx);
         }
 
-        public CustomerRepository Customers
-            => customerRepository ??= new(customersContext);
+        public IRepository<Customer> Customers
+            => customerRepository;
 
         public IEnumerable<Customer> GetAllCustomers()
             => customerRepository.GetAll();
@@ -23,10 +21,12 @@ namespace ControllerSimulator.DataAccess
             => customerRepository.Get(id);
 
         public IEnumerable<Customer> GetCustomersOlderThan(DateTime date)
-            => customerRepository.GetAll().Where(x => x.DateOfBirth < date);
+            => customerRepository.GetAll()
+            .Where(x => x.DateOfBirth < date);
 
         public int GetTotalQuota()
-            => customerRepository.GetAll().Sum(x => x.Quota);
+            => customerRepository.GetAll()
+            .Sum(x => x.Quota);
 
         public IEnumerable<Customer> UpdateAllQuotas()
         {

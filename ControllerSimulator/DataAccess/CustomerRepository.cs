@@ -5,34 +5,18 @@ namespace ControllerSimulator.DataAccess
 {
     public class CustomerRepository : IRepository<Customer>
     {
-        CustomersContext ctx;
+        readonly CustomersContext ctx;
 
         public CustomerRepository(CustomersContext dbContext)
         {
             ctx = dbContext;
         }
 
-        public void Create(Customer item)
-        {
-            ctx.Customers.Add(item);
-        }
-
-        public void Delete(int id)
-        {
-            var item = ctx.Customers.Find(x => x.Id == id);
-            if (item != null)
-                ctx.Customers.Remove(item);
-        }
-
         public Customer? Get(int id)
-        {
-            return ctx.Customers.Find(x => x.Id == id);
-        }
+            => ctx.Customers.Find(x => x.Id == id);
 
         public IEnumerable<Customer> GetAll()
-        {
-            return ctx.Customers;
-        }
+            => ctx.Customers;
 
         public void Update(Customer item)
         {
