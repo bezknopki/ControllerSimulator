@@ -10,11 +10,11 @@ namespace ControllerSimulator.Controllers
     /// </summary>
     public class WebApiControllerSimulator
     {
-        readonly UnitOfWork unitOfWork;
+        readonly UnitOfWork _unitOfWork;
 
         public WebApiControllerSimulator(UnitOfWork uow)
         {
-            unitOfWork = uow;
+            _unitOfWork = uow;
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace ControllerSimulator.Controllers
         {
             return await Task.Run(
                 () =>
-                unitOfWork.GetAllCustomers()
+                _unitOfWork.GetAllCustomers()
                 , ct);
         }
 
@@ -40,7 +40,7 @@ namespace ControllerSimulator.Controllers
         {
             return await Task.Run(
                 () =>
-                unitOfWork.GetCustomer(iCustomerId)
+                _unitOfWork.GetCustomer(iCustomerId)
                 , ct);
         }
 
@@ -54,7 +54,7 @@ namespace ControllerSimulator.Controllers
         {
             return await Task.Run(
                 () =>
-                unitOfWork.GetCustomersOlderThan(dt)
+                _unitOfWork.GetCustomersOlderThan(dt)
                 , ct);
         }
 
@@ -67,7 +67,7 @@ namespace ControllerSimulator.Controllers
         {
             return await Task.Run(
                 () =>
-                unitOfWork.GetTotalQuota()
+                _unitOfWork.GetTotalQuota()
                 , ct);
         }
 
@@ -83,7 +83,7 @@ namespace ControllerSimulator.Controllers
             await Task.Run(
                 () =>
                 {
-                    var customer = unitOfWork.GetCustomer(iCustomerId);
+                    var customer = _unitOfWork.GetCustomer(iCustomerId);
                     if (customer != null)
                         DumpHelper.DumpCustomer(customer);
                 }
@@ -102,7 +102,7 @@ namespace ControllerSimulator.Controllers
             await Task.Run(
                 () =>
                 {
-                    var customers = unitOfWork.GetAllCustomers();
+                    var customers = _unitOfWork.GetAllCustomers();
                     DumpHelper.DumpCustomersFullName(customers);
                 }
                 , ct);
@@ -117,13 +117,13 @@ namespace ControllerSimulator.Controllers
         {
             return await Task.Run(
                 () =>
-                unitOfWork.UpdateAllQuotas()
+                _unitOfWork.UpdateAllQuotas()
                 , ct);
         }
 
         public IEnumerable<Customer> UpdateAllQuotasSync()
         {
-            return unitOfWork.UpdateAllQuotas();
+            return _unitOfWork.UpdateAllQuotas();
         }
     }
 }

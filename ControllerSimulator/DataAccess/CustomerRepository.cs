@@ -5,26 +5,26 @@ namespace ControllerSimulator.DataAccess
 {
     public class CustomerRepository : IRepository<Customer>
     {
-        readonly CustomersContext ctx;
+        readonly CustomersContext _ctx;
 
         public CustomerRepository(CustomersContext dbContext)
         {
-            ctx = dbContext;
+            _ctx = dbContext;
         }
 
         public Customer? Get(int id)
-            => ctx.Customers.Find(x => x.Id == id);
+            => _ctx.Customers.Find(x => x.Id == id);
 
         public IEnumerable<Customer> GetAll()
-            => ctx.Customers;
+            => _ctx.Customers;
 
         public void Update(Customer item)
         {
-            var old = ctx.Customers.Find(x => x.Id == item.Id);
+            var old = _ctx.Customers.Find(x => x.Id == item.Id);
             if (old != null)
             {
-                int index = ctx.Customers.IndexOf(old);
-                ctx.Customers[index] = item;
+                int index = _ctx.Customers.IndexOf(old);
+                _ctx.Customers[index] = item;
             }
             else
                 throw new NoSuchElementException();

@@ -6,9 +6,9 @@ namespace ControllerSimulator.Helpers
 {
     public static class DumpHelper
     {
-        public static readonly string dumpPath = "..\\Dumps";
+        public static readonly string _dumpPath = "..\\Dumps";
 
-        public static string DumpPath => dumpPath;       
+        public static string DumpPath => _dumpPath;       
 
         public static void DumpCustomer(Customer customer)
         {
@@ -20,7 +20,7 @@ namespace ControllerSimulator.Helpers
         private static string FilePathForCustomer(Customer customer)
         {
             string fileName = "customer" + customer.Id + ".json";
-            string filePath = Path.Combine(dumpPath, fileName);
+            string filePath = Path.Combine(_dumpPath, fileName);
             return filePath;
         }
 
@@ -35,7 +35,7 @@ namespace ControllerSimulator.Helpers
         private static string FilePathForCustomersNames()
         {
             string fileName = "customersNames.txt";
-            string filePath = Path.Combine(dumpPath, fileName);
+            string filePath = Path.Combine(_dumpPath, fileName);
             return filePath;
         }
 
