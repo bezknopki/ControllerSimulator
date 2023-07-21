@@ -120,10 +120,5 @@ namespace ControllerSimulator.Controllers
                 _unitOfWork.UpdateAllQuotas()
                 , ct);
         }
-
-        public IEnumerable<Customer> UpdateAllQuotasSync()
-        {
-            return _unitOfWork.UpdateAllQuotas();
-        }
     }
 }

@@ -31,10 +31,9 @@ namespace ControllerSimulator.DataAccess
         public IEnumerable<Customer> UpdateAllQuotas()
         {
             foreach (var customer in _customerRepository.GetAll())
-            {
                 customer.UpdateQuota();
-                yield return customer;
-            }
+            
+            return _customerRepository.GetAll();
         }
     }
 }

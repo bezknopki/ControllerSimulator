@@ -1,6 +1,7 @@
 using ControllerSimulator.Controllers;
 using ControllerSimulator.DataAccess;
 using ControllerSimulator.Helpers;
+using ControllerSimulator.Models;
 using ControllerSimulatorTests.TestingHelpers;
 
 namespace ControllerSimulatorTests
@@ -87,11 +88,11 @@ namespace ControllerSimulatorTests
             => Path.Combine(_dumpPath, fileName);
 
         [Fact]
-        public void UpdateAllQuotasTest()
+        public async void UpdateAllQuotasTest()
         {
             var customersQuotasAtStart = GetCustomersQuota();
 
-            _testController.UpdateAllQuotasSync();
+            await _testController.UpdateAllQuotas(_cancellationTokenSource.Token);
 
             AssertIfQuotaNotChanged(customersQuotasAtStart);
         }

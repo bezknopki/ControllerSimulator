@@ -1,4 +1,5 @@
 ﻿using ControllerSimulator.DataAccess;
+using System.Diagnostics;
 
 namespace ControllerSimulator.Models
 {
@@ -10,6 +11,7 @@ namespace ControllerSimulator.Models
         public override void UpdateQuota()
         {
             Quota += 5;
+            Debug.WriteLine("QUOTA UPDATED");
         }
     }
 }
