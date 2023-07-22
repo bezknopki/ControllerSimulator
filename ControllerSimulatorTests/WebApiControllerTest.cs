@@ -83,7 +83,7 @@ namespace ControllerSimulatorTests
             Assert.True(File.Exists(filePath));
         }
 
-        private string FilePathFor(string fileName) 
+        private string FilePathFor(string fileName)
             => Path.Combine(_dumpPath, fileName);
 
         [Fact]
