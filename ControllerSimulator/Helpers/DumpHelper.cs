@@ -11,15 +11,15 @@ namespace ControllerSimulator.Helpers
 
         public static void DumpCustomer(Customer customer)
         {
-            string filePath = FilePathForCustomer(customer);
+            var filePath = FilePathForCustomer(customer);
             var serializedCustomer = SerializationHelper.Serialize(customer);
             WriteToFile(serializedCustomer, filePath);
         }
 
         private static string FilePathForCustomer(Customer customer)
         {
-            string fileName = "customer" + customer.Id + ".json";
-            string filePath = Path.Combine(_dumpPath, fileName);
+            var fileName = "customer" + customer.Id + ".json";
+            var filePath = Path.Combine(_dumpPath, fileName);
             return filePath;
         }
 
@@ -33,8 +33,8 @@ namespace ControllerSimulator.Helpers
 
         private static string FilePathForCustomersNames()
         {
-            string fileName = "customersNames.txt";
-            string filePath = Path.Combine(_dumpPath, fileName);
+            var fileName = "customersNames.txt";
+            var filePath = Path.Combine(_dumpPath, fileName);
             return filePath;
         }
 

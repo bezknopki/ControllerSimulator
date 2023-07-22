@@ -4,6 +4,5 @@
     {
         IEnumerable<T> GetAll();
         T? Get(int id);
-        void Update(T item);
     }
 }

@@ -1,5 +1,4 @@
-﻿using ControllerSimulator.Exceptions;
-using ControllerSimulator.Models;
+﻿using ControllerSimulator.Models;
 
 namespace ControllerSimulator.DataAccess
 {
@@ -17,17 +16,5 @@ namespace ControllerSimulator.DataAccess
 
         public IEnumerable<Customer> GetAll()
             => _ctx.Customers;
-
-        public void Update(Customer item)
-        {
-            var old = _ctx.Customers.Find(x => x.Id == item.Id);
-            if (old != null)
-            {
-                int index = _ctx.Customers.IndexOf(old);
-                _ctx.Customers[index] = item;
-            }
-            else
-                throw new NoSuchElementException();
-        }
     }
 }
